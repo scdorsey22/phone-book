@@ -2,6 +2,8 @@ import React, { useState} from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import fire from "./fire";
 import Login from "./components/sessions/Login";
+import ListAllNumbers from "./components/phonebook/ListAllNumbers";
+import AddNumber from "./components/phonebook/AddNumber";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +32,12 @@ function App() {
         <span onClick={signOut}>
           <a href="#">Sign Out</a>
         </span>
+        <Routes>
+          <Route path="/add-number" element={<AddNumber />}/>
+        </Routes>
+        <Routes>
+          <Route path="/" element={<ListAllNumbers />}/>
+        </Routes>
         </>
       )}
       
