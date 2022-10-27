@@ -1,6 +1,8 @@
 
-import { initializeApp } from "firebase/app";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyADNbB1wvPay16d2n8LHpfzt_DIX_PmHCo",
@@ -12,12 +14,12 @@ const firebaseConfig = {
   };
 
   try {
-      initializeApp(firebaseConfig);
+      firebase.initializeApp(firebaseConfig);
   } catch (err) {
       if (!/already exists/.test(err.message)) {
           console.error('Firebase initialization error', err.stack);
       }
   }
 
-  const fire = initializeApp(firebaseConfig);
+  const fire = firebase
   export default fire;

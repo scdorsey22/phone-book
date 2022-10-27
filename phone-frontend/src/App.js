@@ -1,5 +1,7 @@
 import React, { useState} from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import fire from "./fire";
+import Login from "./components/sessions/Login";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -10,9 +12,28 @@ function App() {
 
   console.log('logged in?', isLoggedIn)
 
+  const signOut = () => {
+    fire.auth().signOut()
+  };
+
   return (
     <div className="App">
-      Hello World!
+      <BrowserRouter>
+      {!isLoggedIn ? (
+        <>
+        <Routes>
+          <Route path="/" element={<Login />} />
+        </Routes>
+        </>
+      ) : (
+        <>
+        <span onClick={signOut}>
+          <a href="#">Sign Out</a>
+        </span>
+        </>
+      )}
+      
+      </BrowserRouter>
     </div>
   );
 }
